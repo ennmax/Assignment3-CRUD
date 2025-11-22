@@ -43,4 +43,4 @@ Built using:
 
 ## .env
 
-The `.env` file is not committed to the repository as it contains the MongoDB connection string. Used `.gitignore` to prevent it from being committed.
+The `.env` file is not committed to this repository as it contains the MongoDB connection string. Used `.gitignore` to prevent it from being committed.
