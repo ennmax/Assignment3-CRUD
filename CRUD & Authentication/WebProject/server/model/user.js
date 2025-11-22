@@ -31,7 +31,7 @@ var userSchema = new mongoose.Schema(
   }
 );
 
-// Add username + password fields and helper methods
+// Add username/password fields and helper methods
 userSchema.plugin(passportLocalMongoose);
 
 module.exports.User = mongoose.model('User', userSchema);
