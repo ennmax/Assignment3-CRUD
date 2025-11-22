@@ -1,1 +1,1 @@
-module.exports={"URI":"mongodb://localhost:27017/bookstore"}
+module.exports={"URI":"mongodb+srv://new-user:XGjkrBuNAQYngQPr@cluster0.cvmfigp.mongodb.net/booktrack"}

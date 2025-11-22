@@ -1,52 +1,37 @@
-const { trim, type } = require('jquery');
-let mongoose = require('mongoose');
-let passportLocalMongoose = require('passport-local-mongoose');
-const { collection } = require('./book');
+var mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 
-let User = mongoose.Schema({
-    username:
-    {
-        type:String,
-        default:"",
-        trim:true,
-        required:'Username is required'
+var userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      trim: true
     },
-    /*password:
-    {
-        type:String,
-        default:"",
-        trim:true,
-        required:'Password is required'
-    },*/
-    email:
-    {
-        type:String,
-        default:"",
-        trim:true,
-        required:'email is required'
+    email: {
+      type: String,
+      required: true,
+      trim: true
     },
-    displayName:
-    {
-        type:String,
-        default:"",
-        trim:true,
-        required:'displayName is required'
+    displayName: {
+      type: String,
+      trim: true
     },
-    created:
-    {
-        type:Date,
-        default:Date.now
+    created: {
+      type: Date,
+      default: Date.now
     },
-    updated:
-    {
-        type:Date,
-        default:Date.now
+    updated: {
+      type: Date,
+      default: Date.now
     }
-},
-{
-    collection:"user"
-}
-)
-let options = ({MissingPasswordError:'Wrong/Missing Password'});
-User.plugin(passportLocalMongoose,options);
-module.exports.User = mongoose.model('User',User);
+  },
+  {
+    collection: 'users'
+  }
+);
+
+// Add username + password fields and helper methods
+userSchema.plugin(passportLocalMongoose);
+
+module.exports.User = mongoose.model('User', userSchema);
